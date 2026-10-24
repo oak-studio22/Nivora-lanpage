@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Lint, build and test
+    name: Lint, Vercel build and test
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -35,8 +35,10 @@ jobs:
       - name: Run ESLint
         run: bun run lint
 
-      - name: Build production bundle
+      - name: Build for Vercel Preview
         run: bun run build
+        env:
+          VERCEL: "1"
 
       - name: Run tests
         run: bun run test
