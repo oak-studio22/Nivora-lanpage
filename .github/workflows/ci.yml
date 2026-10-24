@@ -32,16 +32,6 @@ jobs:
       - name: Install locked dependencies
         run: bun install --frozen-lockfile
 
-      - name: Format source (temporary verification step)
-        run: |
-          bunx prettier --write src/routes/index.tsx src/routes/__root.tsx
-          echo "---BEGIN_FORMATTED_INDEX---"
-          cat src/routes/index.tsx
-          echo "---END_FORMATTED_INDEX---"
-          echo "---BEGIN_FORMATTED_ROOT---"
-          cat src/routes/__root.tsx
-          echo "---END_FORMATTED_ROOT---"
-
       - name: Run ESLint
         run: bun run lint
 
