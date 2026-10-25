@@ -832,6 +832,8 @@ function LandingPage() {
         </div>
       </div>
 
+      <ProductShowcase />
+
       <section
         id="experimente"
         className="relative z-10 mx-auto max-w-7xl scroll-mt-28 px-5 py-20 sm:px-8 sm:py-28 lg:px-12"
