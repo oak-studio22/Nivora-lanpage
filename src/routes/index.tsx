@@ -104,7 +104,7 @@ function DashboardPreview() {
               aria-label="Ver painel em desktop"
               aria-pressed={previewMode === "desktop"}
               onClick={() => setPreviewMode("desktop")}
-              className={\`nivora-mode-button \${previewMode === "desktop" ? "is-active" : ""}\`}
+              className={`nivora-mode-button ${previewMode === "desktop" ? "is-active" : ""}`}
             >
               <Monitor size={14} />
               <span>Desktop</span>
@@ -114,7 +114,7 @@ function DashboardPreview() {
               aria-label="Ver painel em celular"
               aria-pressed={previewMode === "mobile"}
               onClick={() => setPreviewMode("mobile")}
-              className={\`nivora-mode-button \${previewMode === "mobile" ? "is-active" : ""}\`}
+              className={`nivora-mode-button ${previewMode === "mobile" ? "is-active" : ""}`}
             >
               <Smartphone size={14} />
               <span>Celular</span>
@@ -122,7 +122,7 @@ function DashboardPreview() {
           </div>
         </div>
 
-        <div className={\`nivora-device-wrap \${previewMode === "mobile" ? "is-mobile" : ""}\`}>
+        <div className={`nivora-device-wrap ${previewMode === "mobile" ? "is-mobile" : ""}`}>
           <div className="nivora-dashboard">
             <div className="flex items-center justify-between border-b border-white/[0.07] px-4 py-4 sm:px-5">
               <div className="flex items-center gap-3">
@@ -153,7 +153,7 @@ function DashboardPreview() {
                   role="tab"
                   aria-selected={activeTab === tab}
                   onClick={() => setActiveTab(tab)}
-                  className={\`nivora-dashboard-tab \${activeTab === tab ? "is-active" : ""}\`}
+                  className={`nivora-dashboard-tab ${activeTab === tab ? "is-active" : ""}`}
                 >
                   {label}
                 </button>
@@ -194,7 +194,7 @@ function DashboardPreview() {
                     <p className="text-sm font-semibold text-white">{selected.label}</p>
                     <p className="mt-1 text-[11px] text-white/40">{selected.helper}</p>
                   </div>
-                  <p className={\`font-mono text-sm font-semibold \${selected.color === "amber" ? "text-amber-200" : "text-[#b5f4c8]"}\`}>
+                  <p className={`font-mono text-sm font-semibold ${selected.color === "amber" ? "text-amber-200" : "text-[#b5f4c8]"}`}>
                     {money(selected.total)}
                   </p>
                 </div>
@@ -202,13 +202,13 @@ function DashboardPreview() {
                   {selected.bars.map((height, index) => (
                     <div className="flex h-full min-w-0 flex-1 items-end gap-1" key={index}>
                       <span
-                        className={\`nivora-chart-bar \${selected.color === "amber" ? "is-amber" : ""}\`}
-                        style={{ height: \`\${height}%\`, animationDelay: \`\${index * 45}ms\` }}
+                        className={`nivora-chart-bar ${selected.color === "amber" ? "is-amber" : ""}`}
+                        style={{ height: `${height}%`, animationDelay: `${index * 45}ms` }}
                       />
                       {activeTab === "resumo" && (
                         <span
                           className="nivora-chart-bar is-secondary"
-                          style={{ height: \`\${Math.max(15, height * 0.48)}%\`, animationDelay: \`\${index * 45 + 20}ms\` }}
+                          style={{ height: `${Math.max(15, height * 0.48)}%`, animationDelay: `${index * 45 + 20}ms` }}
                         />
                       )}
                     </div>
@@ -260,9 +260,9 @@ function MetricCard({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={\`nivora-metric-card text-left \${active ? "is-active" : ""}\`}
+      className={`nivora-metric-card text-left ${active ? "is-active" : ""}`}
     >
-      <span className={\`nivora-metric-icon \${tone}\`}>{icon}</span>
+      <span className={`nivora-metric-icon ${tone}`}>{icon}</span>
       <span className="mt-3 block text-[11px] text-white/45">{label}</span>
       <span className="mt-1 block text-lg font-semibold tracking-tight text-white sm:text-xl">{value}</span>
       <span className="mt-2 flex items-center gap-1 text-[10px] text-white/30">
@@ -352,7 +352,7 @@ function BalanceSimulator() {
 
           <div className="nivora-balance-result" aria-live="polite">
             <span className="text-xs text-white/45">Saldo estimado no exemplo</span>
-            <strong className={\`mt-2 block text-3xl font-semibold tracking-[-0.05em] sm:text-4xl \${balance < 0 ? "text-amber-200" : "text-[#b5f4c8]"}\`}>
+            <strong className={`mt-2 block text-3xl font-semibold tracking-[-0.05em] sm:text-4xl ${balance < 0 ? "text-amber-200" : "text-[#b5f4c8]"}`}>
               {formattedBalance}
             </strong>
             <span className="mt-3 flex items-center gap-2 text-xs text-white/45">
@@ -360,7 +360,7 @@ function BalanceSimulator() {
               Atualizado automaticamente
             </span>
             <div className="nivora-balance-line" aria-hidden="true">
-              <span style={{ width: \`\${Math.min(100, Math.max(0, ((Number(income) || 0) > 0 ? (balance / (Number(income) || 1)) * 100 : 0)))}%\` }} />
+              <span style={{ width: `${Math.min(100, Math.max(0, ((Number(income) || 0) > 0 ? (balance / (Number(income) || 1)) * 100 : 0)))}%` }} />
             </div>
             <p className="mt-3 text-[10px] leading-5 text-white/30">
               Simulação educativa simples: entradas menos despesas. Não representa dados da sua conta.
