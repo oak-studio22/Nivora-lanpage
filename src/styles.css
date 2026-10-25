@@ -1067,3 +1067,573 @@ a:hover .nivora-logo-mark {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* In-page product walkthrough — app-like preview */
+.nivora-showcase-pill {
+  display: inline-flex;
+  min-height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.55rem 0.8rem;
+  color: rgb(255 255 255 / 55%);
+  font-size: 0.74rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-showcase-pill:hover {
+  transform: translateY(-1px);
+  border-color: rgb(181 244 200 / 25%);
+  color: white;
+}
+
+.nivora-showcase-pill:active {
+  transform: scale(0.97);
+}
+
+.nivora-showcase-pill.is-active {
+  border-color: rgb(181 244 200 / 24%);
+  background: rgb(181 244 200 / 8%);
+  color: #c7f8d3;
+}
+
+.nivora-app-window {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 1.35rem;
+  background: #0b100d;
+  box-shadow:
+    0 32px 110px rgb(0 0 0 / 40%),
+    0 0 0 1px rgb(181 244 200 / 3%),
+    inset 0 1px rgb(255 255 255 / 4%);
+  animation: nivora-visual-in 760ms 120ms both;
+}
+
+.nivora-window-chrome {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 3rem;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: #0d120f;
+  padding: 0.55rem 0.9rem;
+}
+
+.nivora-window-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+}
+
+.nivora-window-dot.is-red {
+  background: #f07878;
+}
+
+.nivora-window-dot.is-yellow {
+  background: #e8bd70;
+}
+
+.nivora-window-dot.is-green {
+  background: #7bc995;
+}
+
+.nivora-address-bar {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.4rem 0.5rem;
+  color: rgb(255 255 255 / 48%);
+  font-size: 0.6rem;
+  white-space: nowrap;
+}
+
+.nivora-address-lock {
+  display: inline-block;
+  width: 0.36rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border: 1px solid rgb(181 244 200 / 55%);
+  border-radius: 2px;
+  box-shadow: inset 0 -2px rgb(181 244 200 / 22%);
+}
+
+.nivora-app-body {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  min-height: 31rem;
+}
+
+.nivora-app-sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(255 255 255 / 6%);
+  background: linear-gradient(180deg, #0d130f, #0a0f0c);
+  padding: 1rem 0.65rem;
+}
+
+.nivora-app-nav {
+  display: flex;
+  min-height: 2.45rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.55rem;
+  color: rgb(255 255 255 / 40%);
+  text-align: left;
+  font-size: 0.66rem;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.nivora-app-nav:hover {
+  color: rgb(255 255 255 / 85%);
+  background: rgb(255 255 255 / 3%);
+}
+
+.nivora-app-nav:active {
+  transform: scale(0.985);
+}
+
+.nivora-app-nav.is-active {
+  border-color: rgb(181 244 200 / 10%);
+  background: rgb(181 244 200 / 7%);
+  color: #c7f8d3;
+}
+
+.nivora-app-content {
+  min-width: 0;
+  padding: 1.15rem;
+  background:
+    radial-gradient(ellipse at 95% 0%, rgb(35 77 48 / 9%), transparent 35%),
+    #0b100d;
+}
+
+.nivora-window-icon {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 0.6rem;
+  background: rgb(255 255 255 / 2%);
+  color: rgb(255 255 255 / 48%);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-window-icon:hover {
+  border-color: rgb(181 244 200 / 25%);
+  background: rgb(181 244 200 / 6%);
+  color: #c7f8d3;
+}
+
+.nivora-avatar {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 16%);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #224d32, #12291b);
+  color: #cbf8d5;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.nivora-showcase-view {
+  animation: nivora-rise 300ms ease both;
+}
+
+.nivora-app-stat {
+  min-width: 0;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.8rem;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.75rem;
+}
+
+.nivora-app-stat > span {
+  display: block;
+  overflow: hidden;
+  color: rgb(255 255 255 / 40%);
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-stat strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.45rem;
+  color: #f5fff7;
+  font-size: clamp(0.82rem, 1.3vw, 1.05rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-stat small {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  color: rgb(255 255 255 / 30%);
+  font-size: 0.55rem;
+}
+
+.nivora-app-stat.is-highlight {
+  border-color: rgb(181 244 200 / 16%);
+  background: linear-gradient(145deg, rgb(181 244 200 / 7%), rgb(255 255 255 / 2%));
+}
+
+.nivora-app-stat small.is-positive {
+  color: #aee9bf;
+}
+
+.nivora-app-panel {
+  min-width: 0;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.85rem;
+  background: rgb(255 255 255 / 1.5%);
+  padding: 0.85rem;
+}
+
+.nivora-app-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.35rem 0.55rem;
+  color: rgb(255 255 255 / 48%);
+  font-size: 0.57rem;
+  white-space: nowrap;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-app-chip:hover {
+  border-color: rgb(181 244 200 / 25%);
+  background: rgb(181 244 200 / 5%);
+  color: #c7f8d3;
+}
+
+.nivora-mini-chart {
+  display: flex;
+  height: 5.8rem;
+  align-items: end;
+  gap: 0.35rem;
+}
+
+.nivora-mini-chart > span {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(to top, #326e46, #b5f4c8);
+  transform: scaleY(0.08);
+  transform-origin: bottom;
+  animation: nivora-bar-grow 650ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.nivora-legend-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 2px;
+  background: #b5f4c8;
+}
+
+.nivora-legend-dot.is-muted {
+  background: rgb(255 255 255 / 25%);
+}
+
+.nivora-donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nivora-donut {
+  display: flex;
+  width: 5.3rem;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0d130f 57%, transparent 59%),
+    conic-gradient(#b5f4c8 0 48%, #5e9b70 48% 80%, #34553d 80% 100%);
+  box-shadow: 0 0 26px rgb(181 244 200 / 5%);
+  animation: nivora-donut-in 620ms ease both;
+}
+
+.nivora-donut > span {
+  color: #e9fff0;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.nivora-mini-track {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 7%);
+}
+
+.nivora-mini-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #7fca94;
+}
+
+.nivora-app-transaction {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.6rem;
+  border-top: 1px solid rgb(255 255 255 / 5%);
+  padding: 0.65rem 0;
+}
+
+.nivora-transaction-icon {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.65rem;
+  background: rgb(255 255 255 / 3%);
+  color: rgb(255 255 255 / 65%);
+}
+
+.nivora-transaction-icon.income {
+  border-color: rgb(181 244 200 / 12%);
+  background: rgb(181 244 200 / 5%);
+  color: #b5f4c8;
+}
+
+.nivora-transaction-icon.expense {
+  color: #ffd394;
+}
+
+.nivora-app-transaction strong,
+.nivora-activity-row strong {
+  display: block;
+  overflow: hidden;
+  color: rgb(255 255 255 / 82%);
+  font-size: 0.62rem;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-transaction small,
+.nivora-activity-row small {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.22rem;
+  color: rgb(255 255 255 / 31%);
+  font-size: 0.54rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-transaction-value {
+  flex: 0 0 auto;
+  font-size: 0.62rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.nivora-transaction-value.income {
+  color: #b5f4c8;
+}
+
+.nivora-transaction-value.expense {
+  color: #ffd394;
+}
+
+.nivora-activity-table {
+  overflow: hidden;
+  width: 100%;
+}
+
+.nivora-activity-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(4.1rem, 0.7fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  border-top: 1px solid rgb(255 255 255 / 5%);
+  padding: 0.7rem 0;
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.57rem;
+}
+
+.nivora-activity-row.is-heading {
+  border-top: 0;
+  padding-top: 0;
+  color: rgb(255 255 255 / 28%);
+  font-size: 0.52rem;
+}
+
+.nivora-activity-row > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nivora-account-card {
+  min-width: 0;
+  border: 1px solid rgb(181 244 200 / 15%);
+  border-radius: 1rem;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(181 244 200 / 10%), transparent 60%),
+    linear-gradient(145deg, #14241a, #0e1510);
+  padding: 1rem;
+}
+
+.nivora-account-card.is-secondary {
+  border-color: rgb(255 255 255 / 9%);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(255 255 255 / 5%), transparent 60%),
+    linear-gradient(145deg, #151b17, #0d120f);
+}
+
+.nivora-account-brand {
+  display: inline-flex;
+  width: 1.8rem;
+  height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 18%);
+  border-radius: 0.6rem;
+  background: #b5f4c8;
+  color: #07110b;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.nivora-account-brand.is-secondary {
+  border-color: rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 5%);
+  color: #b5f4c8;
+}
+
+@keyframes nivora-donut-in {
+  from {
+    opacity: 0.3;
+    transform: rotate(-20deg) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .nivora-app-body {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .nivora-app-sidebar {
+    display: block;
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 6%);
+    padding: 0.75rem;
+  }
+
+  .nivora-app-sidebar > div:first-child {
+    margin-bottom: 0.7rem;
+    padding-top: 0;
+  }
+
+  .nivora-app-sidebar > p {
+    display: none;
+  }
+
+  .nivora-app-nav {
+    display: inline-flex;
+    min-height: 2.1rem;
+    margin-right: 0.2rem;
+    padding-inline: 0.65rem;
+    font-size: 0.62rem;
+  }
+
+  .nivora-app-nav > svg.ml-auto {
+    display: none;
+  }
+
+  .nivora-app-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .nivora-window-chrome {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    padding-inline: 0.7rem;
+  }
+
+  .nivora-address-bar {
+    font-size: 0.55rem;
+  }
+
+  .nivora-app-content {
+    padding: 0.75rem;
+  }
+
+  .nivora-app-stat {
+    padding: 0.6rem;
+  }
+
+  .nivora-activity-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .nivora-activity-row > span:nth-child(2) {
+    display: none;
+  }
+
+  .nivora-activity-row.is-heading > span:nth-child(2) {
+    display: none;
+  }
+
+  .nivora-showcase-pill {
+    font-size: 0.68rem;
+    padding-inline: 0.65rem;
+  }
+}
