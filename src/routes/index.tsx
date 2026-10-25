@@ -1,14 +1,23 @@
 import { useState, type ReactNode } from "react";
 import {
   ArrowDownRight,
+  ArrowLeftRight,
   ArrowRight,
   ArrowUpRight,
+  Bell,
+  Building2,
+  CalendarDays,
   Check,
   ChevronDown,
+  ChevronRight,
   CircleDollarSign,
+  Ellipsis,
+  LayoutDashboard,
   Menu,
   Monitor,
+  Plus,
   RotateCcw,
+  Search,
   ShieldCheck,
   Smartphone,
   Sparkles,
@@ -24,6 +33,7 @@ export const Route = createFileRoute("/")({
 
 type DashboardTab = "resumo" | "entradas" | "saidas";
 type PreviewMode = "desktop" | "mobile";
+type ProductScreen = "overview" | "activity" | "accounts";
 
 const dashboardData: Record<
   DashboardTab,
@@ -292,6 +302,271 @@ function MetricCard({
   );
 }
 
+
+function ProductShowcase() {
+  const [screen, setScreen] = useState<ProductScreen>("overview");
+
+  const navItems: { id: ProductScreen; label: string; icon: typeof LayoutDashboard }[] = [
+    { id: "overview", label: "Visão geral", icon: LayoutDashboard },
+    { id: "activity", label: "Movimentações", icon: ArrowLeftRight },
+    { id: "accounts", label: "Contas", icon: Building2 },
+  ];
+
+  const transactions = [
+    { name: "Projeto Aurora", category: "Serviços", date: "Hoje, 10:42", value: "+ R$ 2.400", type: "income" },
+    { name: "Assinatura de ferramentas", category: "Software", date: "Ontem, 15:20", value: "− R$ 189", type: "expense" },
+    { name: "Pagamento de cliente", category: "Consultoria", date: "21 out, 09:15", value: "+ R$ 1.250", type: "income" },
+  ];
+
+  return (
+    <section id="por-dentro" className="relative z-10 scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+        <div className="max-w-lg">
+          <p className="nivora-section-kicker">Um olhar por dentro</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.055em] text-white sm:text-4xl lg:text-5xl">
+            Não imagine como funciona. <span className="text-white/45">Explore.</span>
+          </h2>
+          <p className="mt-5 text-sm leading-7 text-white/55 sm:text-base">
+            Navegue por uma pequena demonstração da interface: veja um resumo financeiro, explore movimentações e confira uma visão das contas.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setScreen(item.id)}
+                  aria-pressed={screen === item.id}
+                  className={\`nivora-showcase-pill \${screen === item.id ? "is-active" : ""}\`}
+                >
+                  <Icon size={14} />
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-4 flex items-center gap-2 text-xs leading-5 text-white/35">
+            <ShieldCheck size={14} className="shrink-0 text-[#b5f4c8]/70" />
+            Interface ilustrativa. Nenhum dado real é conectado.
+          </p>
+        </div>
+
+        <div className="nivora-app-window">
+          <div className="nivora-window-chrome">
+            <div className="flex items-center gap-1.5" aria-hidden="true">
+              <span className="nivora-window-dot is-red" />
+              <span className="nivora-window-dot is-yellow" />
+              <span className="nivora-window-dot is-green" />
+            </div>
+            <div className="nivora-address-bar">
+              <span className="nivora-address-lock" />
+              app.nivora.com.br <span className="text-white/20">/ demonstração</span>
+            </div>
+            <span className="hidden items-center gap-1.5 text-[10px] text-white/35 sm:flex">
+              <span className="nivora-status-dot" /> Ao vivo na demonstração
+            </span>
+          </div>
+
+          <div className="nivora-app-body">
+            <aside className="nivora-app-sidebar">
+              <div className="mb-7 flex items-center gap-2.5 px-2 pt-2">
+                <span className="nivora-logo-mark is-small">N</span>
+                <span className="text-sm font-semibold tracking-[0.14em] text-white">NIVORA</span>
+              </div>
+              <p className="px-3 pb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-white/25">Workspace</p>
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setScreen(item.id)}
+                    aria-pressed={screen === item.id}
+                    className={\`nivora-app-nav \${screen === item.id ? "is-active" : ""}\`}
+                  >
+                    <Icon size={15} />
+                    <span>{item.label}</span>
+                    {screen === item.id && <ChevronRight size={13} className="ml-auto" />}
+                  </button>
+                );
+              })}
+              <div className="mt-auto hidden rounded-xl border border-white/[0.07] bg-white/[0.025] p-3 lg:block">
+                <div className="flex items-center gap-2 text-[10px] text-white/45">
+                  <ShieldCheck size={13} className="text-[#b5f4c8]/75" />
+                  Seus dados em foco
+                </div>
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/[0.07]">
+                  <span className="block h-full w-3/4 rounded-full bg-[#b5f4c8]/65" />
+                </div>
+              </div>
+            </aside>
+
+            <div className="nivora-app-content">
+              <div className="mb-5 flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[10px] text-white/35">Segunda-feira, 24 de outubro</p>
+                  <h3 className="mt-1.5 text-lg font-semibold tracking-tight text-white sm:text-xl">
+                    {screen === "overview" ? "Bom dia 👋" : screen === "activity" ? "Movimentações" : "Suas contas"}
+                  </h3>
+                  <p className="mt-1 text-[11px] text-white/40">
+                    {screen === "overview" ? "Aqui está um resumo do seu negócio." : screen === "activity" ? "Tudo o que entrou e saiu, em um só lugar." : "Uma visão simples das suas contas."}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button type="button" className="nivora-window-icon" aria-label="Pesquisar (demonstração)" onClick={() => setScreen("activity")}>
+                    <Search size={14} />
+                  </button>
+                  <button type="button" className="nivora-window-icon" aria-label="Notificações (demonstração)" onClick={() => setScreen("accounts")}>
+                    <Bell size={14} />
+                  </button>
+                  <span className="nivora-avatar">K</span>
+                </div>
+              </div>
+
+              {screen === "overview" && (
+                <div key="overview" className="nivora-showcase-view">
+                  <div className="grid gap-2 sm:grid-cols-3">
+                    <div className="nivora-app-stat is-highlight">
+                      <span>Saldo total</span>
+                      <strong>R$ 12.480</strong>
+                      <small><TrendingUp size={11} /> +8,4% no período</small>
+                    </div>
+                    <div className="nivora-app-stat">
+                      <span>Entradas</span>
+                      <strong>R$ 8.250</strong>
+                      <small className="is-positive">Neste mês</small>
+                    </div>
+                    <div className="nivora-app-stat">
+                      <span>Saídas</span>
+                      <strong>R$ 3.170</strong>
+                      <small>Neste mês</small>
+                    </div>
+                  </div>
+                  <div className="mt-3 grid gap-3 lg:grid-cols-[1.2fr_0.8fr]">
+                    <div className="nivora-app-panel">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <p className="text-[11px] font-semibold text-white">Fluxo de caixa</p>
+                          <p className="mt-1 text-[9px] text-white/35">Comparação ilustrativa</p>
+                        </div>
+                        <span className="nivora-app-chip"><CalendarDays size={10} /> 6 meses</span>
+                      </div>
+                      <div className="nivora-mini-chart mt-4">
+                        {[42, 56, 36, 68, 52, 78, 62, 91, 72, 84, 64, 100].map((height, i) => (
+                          <span key={i} style={{ height: \`\${height}%\`, animationDelay: \`\${i * 35}ms\` }} />
+                        ))}
+                      </div>
+                      <div className="mt-3 flex gap-3 text-[9px] text-white/35">
+                        <span className="flex items-center gap-1"><i className="nivora-legend-dot" /> Entradas</span>
+                        <span className="flex items-center gap-1"><i className="nivora-legend-dot is-muted" /> Saídas</span>
+                      </div>
+                    </div>
+                    <div className="nivora-app-panel">
+                      <p className="text-[11px] font-semibold text-white">Distribuição</p>
+                      <p className="mt-1 text-[9px] text-white/35">Exemplo de despesas</p>
+                      <div className="nivora-donut-wrap mt-3">
+                        <div className="nivora-donut"><span>R$ 3,1k</span></div>
+                      </div>
+                      <div className="mt-3 space-y-2">
+                        <div className="flex justify-between text-[9px]"><span className="text-white/45">Operação</span><span className="text-white/70">48%</span></div>
+                        <div className="nivora-mini-track"><span style={{ width: "48%" }} /></div>
+                        <div className="flex justify-between text-[9px]"><span className="text-white/45">Serviços</span><span className="text-white/70">32%</span></div>
+                        <div className="nivora-mini-track"><span style={{ width: "32%" }} /></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="nivora-app-panel mt-3">
+                    <div className="mb-3 flex items-center justify-between">
+                      <p className="text-[11px] font-semibold text-white">Últimas movimentações</p>
+                      <button type="button" className="text-[9px] text-[#b5f4c8]" onClick={() => setScreen("activity")}>Ver todas <ArrowRight size={10} className="ml-1 inline" /></button>
+                    </div>
+                    {transactions.slice(0, 2).map((transaction) => (
+                      <div key={transaction.name} className="nivora-app-transaction">
+                        <span className={\`nivora-transaction-icon \${transaction.type}\`}>
+                          {transaction.type === "income" ? <ArrowDownRight size={13} /> : <ArrowUpRight size={13} />}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <strong>{transaction.name}</strong>
+                          <small>{transaction.category}</small>
+                        </span>
+                        <span className={\`nivora-transaction-value \${transaction.type}\`}>{transaction.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {screen === "activity" && (
+                <div key="activity" className="nivora-showcase-view">
+                  <div className="nivora-app-panel">
+                    <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="text-[11px] font-semibold text-white">Todas as movimentações</p>
+                        <p className="mt-1 text-[9px] text-white/35">Exemplos fictícios para navegar</p>
+                      </div>
+                      <button type="button" className="nivora-app-chip" onClick={() => setScreen("accounts")}><Plus size={11} /> Nova visão</button>
+                    </div>
+                    <div className="nivora-activity-table">
+                      <div className="nivora-activity-row is-heading"><span>Descrição</span><span>Data</span><span>Valor</span></div>
+                      {transactions.map((transaction) => (
+                        <div className="nivora-activity-row" key={transaction.name}>
+                          <span className="min-w-0"><strong>{transaction.name}</strong><small>{transaction.category}</small></span>
+                          <span className="text-white/35">{transaction.date}</span>
+                          <span className={\`nivora-transaction-value \${transaction.type}\`}>{transaction.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    <div className="nivora-app-stat"><span>Total de entradas</span><strong className="text-[#b5f4c8]">R$ 3.650</strong></div>
+                    <div className="nivora-app-stat"><span>Total de saídas</span><strong>R$ 189</strong></div>
+                  </div>
+                </div>
+              )}
+
+              {screen === "accounts" && (
+                <div key="accounts" className="nivora-showcase-view">
+                  <div className="mb-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-[11px] font-semibold text-white">Contas cadastradas</p>
+                      <p className="mt-1 text-[9px] text-white/35">Saldos de demonstração</p>
+                    </div>
+                    <button type="button" className="nivora-app-chip" onClick={() => setScreen("overview")}><Plus size={11} /> Adicionar conta</button>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="nivora-account-card">
+                      <div className="flex items-center justify-between"><span className="nivora-account-brand">N</span><Ellipsis size={16} className="text-white/35" /></div>
+                      <p className="mt-5 text-[10px] text-white/45">Conta principal</p>
+                      <strong className="mt-1 block text-xl text-white">R$ 8.960</strong>
+                      <div className="mt-4 flex items-center gap-2 text-[9px] text-white/35"><span className="nivora-status-dot" /> Saldo ilustrativo</div>
+                    </div>
+                    <div className="nivora-account-card is-secondary">
+                      <div className="flex items-center justify-between"><span className="nivora-account-brand is-secondary"><Wallet size={14} /></span><Ellipsis size={16} className="text-white/35" /></div>
+                      <p className="mt-5 text-[10px] text-white/45">Reserva do negócio</p>
+                      <strong className="mt-1 block text-xl text-white">R$ 3.520</strong>
+                      <div className="mt-4 flex items-center gap-2 text-[9px] text-white/35"><span className="nivora-status-dot" /> Saldo ilustrativo</div>
+                    </div>
+                  </div>
+                  <div className="nivora-app-panel mt-3 flex items-center justify-between gap-3">
+                    <div><p className="text-[10px] text-white/40">Saldo total combinado</p><strong className="mt-1 block text-xl text-[#b5f4c8]">R$ 12.480</strong></div>
+                    <div className="rounded-xl bg-[#b5f4c8]/[0.07] p-3 text-[#b5f4c8]"><Building2 size={20} /></div>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/[0.06] pt-3 text-[9px] text-white/25">
+                <span>Prévia visual — dados fictícios</span>
+                <span className="flex items-center gap-1"><span className="nivora-status-dot" /> Tudo pronto para explorar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function BalanceSimulator() {
   const [income, setIncome] = useState("8250");
   const [expenses, setExpenses] = useState("3170");
@@ -444,8 +719,8 @@ function LandingPage() {
             <a href="https://nivora-cyan.vercel.app/" className="nivora-login-link">
               Entrar
             </a>
-            <a href="#experimente" className="nivora-button nivora-button-primary">
-              Explorar agora <ArrowRight size={15} />
+            <a href="#por-dentro" className="nivora-button nivora-button-primary">
+              Ver demonstração <ArrowRight size={15} />
             </a>
           </div>
 
