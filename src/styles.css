@@ -1068,7 +1068,6 @@ a:hover .nivora-logo-mark {
   }
 }
 
-
 /* In-page product walkthrough — app-like preview */
 .nivora-showcase-pill {
   display: inline-flex;
@@ -1222,9 +1221,7 @@ a:hover .nivora-logo-mark {
 .nivora-app-content {
   min-width: 0;
   padding: 1.15rem;
-  background:
-    radial-gradient(ellipse at 95% 0%, rgb(35 77 48 / 9%), transparent 35%),
-    #0b100d;
+  background: radial-gradient(ellipse at 95% 0%, rgb(35 77 48 / 9%), transparent 35%), #0b100d;
 }
 
 .nivora-window-icon {
