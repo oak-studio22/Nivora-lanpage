@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import {
   ArrowDownRight,
   ArrowRight,
@@ -250,7 +250,7 @@ function MetricCard({
 }: {
   label: string;
   value: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   tone: "neutral" | "green" | "amber";
   active: boolean;
   onClick: () => void;
