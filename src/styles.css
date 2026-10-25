@@ -142,3 +142,1495 @@
     color: var(--color-foreground);
   }
 }
+
+/* NIVORA Landing 2.0 — motion and interaction layer */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+.nivora-site {
+  isolation: isolate;
+  position: relative;
+}
+
+.nivora-background {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 6%, rgb(32 91 57 / 18%), transparent 32%),
+    radial-gradient(ellipse at 12% 24%, rgb(28 84 56 / 12%), transparent 27%);
+}
+
+.nivora-background-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 2.2%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 2.2%) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.nivora-background-beam {
+  position: absolute;
+  top: -18rem;
+  right: 5%;
+  width: min(50vw, 44rem);
+  height: min(50vw, 44rem);
+  border: 1px solid rgb(181 244 200 / 7%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3rem rgb(181 244 200 / 1.5%),
+    0 0 0 7rem rgb(181 244 200 / 1%);
+  animation: nivora-orbit-drift 24s ease-in-out infinite alternate;
+}
+
+.nivora-header {
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: rgb(8 11 9 / 78%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.nivora-logo-mark {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 45%);
+  border-radius: 0.85rem;
+  background: linear-gradient(145deg, #c8f9d5, #83d9a0);
+  color: #08120b;
+  font-size: 1.1rem;
+  font-weight: 900;
+  box-shadow: 0 0 26px rgb(181 244 200 / 12%);
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.nivora-logo-mark.is-small {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.65rem;
+  font-size: 0.9rem;
+}
+
+a:hover .nivora-logo-mark {
+  transform: rotate(-5deg) scale(1.04);
+  box-shadow: 0 0 32px rgb(181 244 200 / 22%);
+}
+
+.nivora-nav-link,
+.nivora-login-link,
+.nivora-footer-link {
+  color: rgb(255 255 255 / 57%);
+  font-size: 0.83rem;
+  transition: color 180ms ease;
+}
+
+.nivora-nav-link:hover,
+.nivora-login-link:hover,
+.nivora-footer-link:hover {
+  color: #d9ffe2;
+}
+
+.nivora-menu-button {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0.9rem;
+  background: rgb(255 255 255 / 3%);
+  color: #f3fff6;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.nivora-menu-button:hover {
+  transform: translateY(-1px);
+  border-color: rgb(181 244 200 / 34%);
+  background: rgb(181 244 200 / 7%);
+}
+
+.nivora-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+  background: rgb(8 11 9 / 96%);
+  padding: 1rem 1.25rem 1.25rem;
+  animation: nivora-rise 220ms ease both;
+}
+
+.nivora-mobile-menu > a:not(.nivora-button) {
+  border-radius: 0.75rem;
+  padding: 0.85rem 0.75rem;
+  color: rgb(255 255 255 / 74%);
+  font-size: 0.9rem;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.nivora-mobile-menu > a:not(.nivora-button):hover {
+  background: rgb(255 255 255 / 5%);
+  color: white;
+}
+
+.nivora-button {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.nivora-button::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgb(255 255 255 / 24%) 48%, transparent 76%);
+  content: "";
+  opacity: 0;
+  transform: translateX(-130%);
+  transition:
+    transform 520ms ease,
+    opacity 180ms ease;
+}
+
+.nivora-button:hover::after {
+  opacity: 1;
+  transform: translateX(130%);
+}
+
+.nivora-button:hover {
+  transform: translateY(-2px);
+}
+
+.nivora-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.nivora-button:focus-visible,
+.nivora-mode-button:focus-visible,
+.nivora-dashboard-tab:focus-visible,
+.nivora-metric-card:focus-visible,
+.nivora-preset-button:focus-visible,
+.nivora-number-input:focus-visible,
+.nivora-menu-button:focus-visible {
+  outline: 2px solid #b5f4c8;
+  outline-offset: 4px;
+}
+
+.nivora-button-primary {
+  background: linear-gradient(110deg, #c7f8d3, #a1edb6);
+  color: #07110b;
+  box-shadow: 0 5px 20px rgb(181 244 200 / 10%);
+}
+
+.nivora-button-primary:hover {
+  background: linear-gradient(110deg, #d8ffe1, #b5f4c8);
+  box-shadow: 0 8px 28px rgb(181 244 200 / 20%);
+}
+
+.nivora-button-secondary {
+  border-color: rgb(255 255 255 / 14%);
+  background: rgb(255 255 255 / 2%);
+  color: rgb(255 255 255 / 82%);
+}
+
+.nivora-button-secondary:hover {
+  border-color: rgb(181 244 200 / 34%);
+  background: rgb(181 244 200 / 5%);
+  color: white;
+}
+
+.nivora-button-large {
+  min-height: 3.25rem;
+  padding: 0.9rem 1.35rem;
+  font-size: 0.87rem;
+}
+
+.nivora-eyebrow,
+.nivora-section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #b5f4c8;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nivora-eyebrow {
+  border: 1px solid rgb(181 244 200 / 17%);
+  border-radius: 999px;
+  background: rgb(181 244 200 / 5%);
+  padding: 0.6rem 0.85rem;
+  letter-spacing: 0.055em;
+  text-transform: none;
+}
+
+.nivora-eyebrow svg {
+  animation: nivora-soft-glow 3s ease-in-out infinite;
+}
+
+.nivora-hero-copy {
+  animation: nivora-rise 760ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.nivora-hero-visual {
+  animation: nivora-visual-in 900ms 100ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.nivora-hero-title {
+  text-wrap: balance;
+}
+
+.nivora-title-gradient {
+  background: linear-gradient(105deg, #b5f4c8 0%, #e0ffe7 38%, #75d99b 76%, #b5f4c8 100%);
+  background-size: 180% 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nivora-gradient-sweep 9s ease-in-out infinite alternate;
+}
+
+.nivora-trust-dot {
+  display: inline-flex;
+  width: 1.55rem;
+  height: 1.55rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #080b09;
+  border-radius: 50%;
+  background: #193d2a;
+  color: #b5f4c8;
+  font-size: 0.7rem;
+}
+
+.nivora-proof-icon {
+  display: inline-flex;
+  width: 2.55rem;
+  height: 2.55rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 14%);
+  border-radius: 0.9rem;
+  background: rgb(181 244 200 / 5%);
+  color: #b5f4c8;
+}
+
+.nivora-orbit {
+  position: absolute;
+  z-index: 0;
+  border: 1px solid rgb(181 244 200 / 7%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.nivora-orbit-one {
+  top: 8%;
+  left: 12%;
+  width: 76%;
+  aspect-ratio: 1;
+  animation: nivora-orbit-drift 18s ease-in-out infinite alternate;
+}
+
+.nivora-orbit-two {
+  top: 20%;
+  left: 23%;
+  width: 54%;
+  aspect-ratio: 1;
+  border-color: rgb(181 244 200 / 5%);
+  animation: nivora-orbit-drift 24s ease-in-out infinite alternate-reverse;
+}
+
+.nivora-status-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #b5f4c8;
+  box-shadow: 0 0 12px rgb(181 244 200 / 65%);
+}
+
+.nivora-status-dot::after {
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgb(181 244 200 / 40%);
+  border-radius: 50%;
+  content: "";
+  animation: nivora-pulse 2.4s ease-out infinite;
+}
+
+.nivora-mode-button {
+  display: inline-flex;
+  min-height: 2.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  color: rgb(255 255 255 / 44%);
+  font-size: 0.68rem;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.nivora-mode-button:hover {
+  color: white;
+}
+
+.nivora-mode-button:active {
+  transform: scale(0.96);
+}
+
+.nivora-mode-button.is-active {
+  background: rgb(181 244 200 / 12%);
+  color: #c8f9d5;
+}
+
+.nivora-device-wrap {
+  position: relative;
+  width: 100%;
+  transition:
+    width 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    max-width 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nivora-device-wrap.is-mobile {
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.nivora-dashboard {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(ellipse at 90% 0%, rgb(38 91 57 / 12%), transparent 48%),
+    linear-gradient(145deg, #101713, #0b100d 55%, #080c09);
+  box-shadow:
+    0 40px 110px rgb(0 0 0 / 46%),
+    0 0 0 1px rgb(181 244 200 / 2%),
+    inset 0 1px rgb(255 255 255 / 4%);
+  transition:
+    border-color 300ms ease,
+    border-radius 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.nivora-device-wrap.is-mobile .nivora-dashboard {
+  border-radius: 1.85rem;
+  border-color: rgb(181 244 200 / 22%);
+  box-shadow:
+    0 35px 85px rgb(0 0 0 / 54%),
+    0 0 0 5px #111713,
+    0 0 0 6px rgb(255 255 255 / 8%);
+}
+
+.nivora-device-wrap.is-mobile .nivora-dashboard > .grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.nivora-device-wrap.is-mobile .nivora-metric-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 0.7rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.nivora-device-wrap.is-mobile .nivora-metric-card > .nivora-metric-icon {
+  grid-row: span 2;
+  margin: 0;
+}
+
+.nivora-device-wrap.is-mobile .nivora-metric-card > span:nth-child(2),
+.nivora-device-wrap.is-mobile .nivora-metric-card > span:nth-child(3),
+.nivora-device-wrap.is-mobile .nivora-metric-card > span:nth-child(4) {
+  margin-top: 0;
+}
+
+.nivora-device-wrap.is-mobile .nivora-metric-card > span:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.nivora-device-wrap.is-mobile .nivora-metric-card > span:nth-child(4) {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.nivora-dashboard-tab {
+  min-height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  transition:
+    color 200ms ease,
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.nivora-dashboard-tab:hover {
+  color: white;
+}
+
+.nivora-dashboard-tab:active {
+  transform: scale(0.97);
+}
+
+.nivora-dashboard-tab.is-active {
+  border-color: rgb(181 244 200 / 15%);
+  background: rgb(181 244 200 / 8%);
+  color: #c8f9d5;
+}
+
+.nivora-metric-card {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.9rem;
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.nivora-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(181 244 200 / 24%);
+  background: rgb(181 244 200 / 4%);
+}
+
+.nivora-metric-card:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.nivora-metric-card.is-active {
+  border-color: rgb(181 244 200 / 26%);
+  background: linear-gradient(145deg, rgb(181 244 200 / 7%), rgb(255 255 255 / 2%));
+  box-shadow: inset 0 0 0 1px rgb(181 244 200 / 3%);
+}
+
+.nivora-metric-icon {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 0.7rem;
+  background: rgb(255 255 255 / 3%);
+  color: rgb(255 255 255 / 75%);
+}
+
+.nivora-metric-icon.green {
+  border-color: rgb(181 244 200 / 14%);
+  background: rgb(181 244 200 / 7%);
+  color: #b5f4c8;
+}
+
+.nivora-metric-icon.amber {
+  border-color: rgb(255 205 132 / 14%);
+  background: rgb(255 205 132 / 6%);
+  color: #ffd394;
+}
+
+.nivora-chart-bar {
+  display: block;
+  width: 100%;
+  min-width: 2px;
+  border-radius: 4px 4px 1px 1px;
+  background: linear-gradient(to top, #478c60, #b5f4c8);
+  transform: scaleY(0.08);
+  transform-origin: center bottom;
+  animation: nivora-bar-grow 720ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  transition: filter 220ms ease;
+}
+
+.nivora-chart-bar.is-amber {
+  background: linear-gradient(to top, #ad8144, #ffd394);
+}
+
+.nivora-chart-bar.is-secondary {
+  background: linear-gradient(to top, rgb(255 255 255 / 6%), rgb(255 255 255 / 22%));
+}
+
+.nivora-chart:hover .nivora-chart-bar {
+  filter: brightness(1.13);
+}
+
+.nivora-simulator {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(181 244 200 / 14%);
+  border-radius: 1.75rem;
+  background: linear-gradient(140deg, #111a14, #0c110e 60%, #090d0a);
+  padding: 1.4rem;
+  box-shadow:
+    0 30px 100px rgb(0 0 0 / 19%),
+    inset 0 1px rgb(255 255 255 / 4%);
+}
+
+.nivora-simulator-glow {
+  position: absolute;
+  top: -12rem;
+  right: -10rem;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  background: rgb(59 145 83 / 10%);
+  filter: blur(75px);
+  pointer-events: none;
+}
+
+.nivora-input-wrap {
+  display: flex;
+  min-height: 3.2rem;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0.95rem;
+  background: rgb(0 0 0 / 15%);
+  padding: 0 0.9rem;
+  color: rgb(255 255 255 / 43%);
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.nivora-input-wrap:focus-within {
+  border-color: rgb(181 244 200 / 50%);
+  background: rgb(0 0 0 / 24%);
+  box-shadow: 0 0 0 3px rgb(181 244 200 / 7%);
+}
+
+.nivora-number-input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #f3fff6;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.nivora-number-input::-webkit-inner-spin-button,
+.nivora-number-input::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.nivora-number-input {
+  -moz-appearance: textfield;
+}
+
+.nivora-preset-button {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 3%);
+  padding: 0.5rem 0.8rem;
+  color: rgb(255 255 255 / 64%);
+  font-size: 0.7rem;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.nivora-preset-button:hover {
+  transform: translateY(-1px);
+  border-color: rgb(181 244 200 / 25%);
+  background: rgb(181 244 200 / 6%);
+  color: #d7ffe1;
+}
+
+.nivora-preset-button:active {
+  transform: scale(0.97);
+}
+
+.nivora-balance-result {
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 1.2rem;
+  background: rgb(0 0 0 / 17%);
+  padding: 1.25rem;
+}
+
+.nivora-balance-line {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 7%);
+  margin-top: 1.25rem;
+}
+
+.nivora-balance-line span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #529d6b, #b5f4c8);
+  transition: width 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nivora-feature-card {
+  position: relative;
+  min-height: 17rem;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgb(255 255 255 / 3%), rgb(255 255 255 / 1%));
+  padding: 1.25rem;
+  transition:
+    transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 260ms ease,
+    background 260ms ease;
+}
+
+.nivora-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(181 244 200 / 24%);
+  background: linear-gradient(145deg, rgb(181 244 200 / 6%), rgb(255 255 255 / 1%));
+}
+
+.nivora-feature-number {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  color: rgb(255 255 255 / 42%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.65rem;
+}
+
+.nivora-feature-icon {
+  display: flex;
+  width: 2.8rem;
+  height: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 18%);
+  border-radius: 0.9rem;
+  background: rgb(181 244 200 / 6%);
+  color: #b5f4c8;
+  margin-top: 1.4rem;
+  transition:
+    transform 240ms ease,
+    background 240ms ease;
+}
+
+.nivora-feature-card:hover .nivora-feature-icon {
+  transform: rotate(-5deg) scale(1.05);
+  background: rgb(181 244 200 / 12%);
+}
+
+.nivora-feature-line {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.2rem;
+  left: 1.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(181 244 200 / 28%), transparent 85%);
+  transform: scaleX(0.2);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.nivora-feature-card:hover .nivora-feature-line {
+  transform: scaleX(1);
+}
+
+.nivora-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #b5f4c8;
+  font-size: 0.85rem;
+  font-weight: 650;
+  transition:
+    gap 200ms ease,
+    color 200ms ease;
+}
+
+.nivora-text-link:hover {
+  gap: 0.8rem;
+  color: #e0ffe7;
+}
+
+.nivora-final-cta {
+  position: relative;
+  border: 1px solid rgb(181 244 200 / 17%);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(79 170 102 / 17%), transparent 44%),
+    radial-gradient(ellipse at 10% 100%, rgb(181 244 200 / 5%), transparent 38%),
+    linear-gradient(120deg, #131e16, #0b100d 65%);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 24%);
+}
+
+.nivora-final-cta::before,
+.nivora-final-cta::after {
+  position: absolute;
+  width: 19rem;
+  height: 19rem;
+  border: 1px solid rgb(181 244 200 / 8%);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.nivora-final-cta::before {
+  top: -12rem;
+  right: 8%;
+  box-shadow:
+    0 0 0 2.5rem rgb(181 244 200 / 2%),
+    0 0 0 5rem rgb(181 244 200 / 1%);
+}
+
+.nivora-final-cta::after {
+  right: -12rem;
+  bottom: -14rem;
+  border-color: rgb(181 244 200 / 5%);
+}
+
+@keyframes nivora-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nivora-visual-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes nivora-bar-grow {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nivora-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes nivora-soft-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgb(181 244 200 / 0%));
+  }
+  50% {
+    filter: drop-shadow(0 0 7px rgb(181 244 200 / 55%));
+  }
+}
+
+@keyframes nivora-gradient-sweep {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes nivora-orbit-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  to {
+    transform: translate3d(0.7rem, -0.7rem, 0) rotate(5deg);
+  }
+}
+
+@media (min-width: 640px) {
+  .nivora-simulator {
+    padding: 2rem;
+  }
+
+  .nivora-feature-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .nivora-simulator {
+    border-radius: 1.35rem;
+    padding: 1.15rem;
+  }
+
+  .nivora-mode-button {
+    padding-inline: 0.55rem;
+  }
+
+  .nivora-dashboard {
+    border-radius: 1.15rem;
+  }
+
+  .nivora-dashboard-tab {
+    padding-inline: 0.7rem;
+    font-size: 0.66rem;
+  }
+
+  .nivora-chart {
+    gap: 0.35rem;
+  }
+
+  .nivora-orbit-one {
+    left: 2%;
+    width: 96%;
+  }
+
+  .nivora-orbit-two {
+    left: 13%;
+    width: 74%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* In-page product walkthrough — app-like preview */
+.nivora-showcase-pill {
+  display: inline-flex;
+  min-height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.55rem 0.8rem;
+  color: rgb(255 255 255 / 55%);
+  font-size: 0.74rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-showcase-pill:hover {
+  transform: translateY(-1px);
+  border-color: rgb(181 244 200 / 25%);
+  color: white;
+}
+
+.nivora-showcase-pill:active {
+  transform: scale(0.97);
+}
+
+.nivora-showcase-pill.is-active {
+  border-color: rgb(181 244 200 / 24%);
+  background: rgb(181 244 200 / 8%);
+  color: #c7f8d3;
+}
+
+.nivora-app-window {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 11%);
+  border-radius: 1.35rem;
+  background: #0b100d;
+  box-shadow:
+    0 32px 110px rgb(0 0 0 / 40%),
+    0 0 0 1px rgb(181 244 200 / 3%),
+    inset 0 1px rgb(255 255 255 / 4%);
+  animation: nivora-visual-in 760ms 120ms both;
+}
+
+.nivora-window-chrome {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 3rem;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: #0d120f;
+  padding: 0.55rem 0.9rem;
+}
+
+.nivora-window-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+}
+
+.nivora-window-dot.is-red {
+  background: #f07878;
+}
+
+.nivora-window-dot.is-yellow {
+  background: #e8bd70;
+}
+
+.nivora-window-dot.is-green {
+  background: #7bc995;
+}
+
+.nivora-address-bar {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 6%);
+  border-radius: 0.55rem;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.4rem 0.5rem;
+  color: rgb(255 255 255 / 48%);
+  font-size: 0.6rem;
+  white-space: nowrap;
+}
+
+.nivora-address-lock {
+  display: inline-block;
+  width: 0.36rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border: 1px solid rgb(181 244 200 / 55%);
+  border-radius: 2px;
+  box-shadow: inset 0 -2px rgb(181 244 200 / 22%);
+}
+
+.nivora-app-body {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  min-height: 31rem;
+}
+
+.nivora-app-sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgb(255 255 255 / 6%);
+  background: linear-gradient(180deg, #0d130f, #0a0f0c);
+  padding: 1rem 0.65rem;
+}
+
+.nivora-app-nav {
+  display: flex;
+  min-height: 2.45rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.55rem;
+  color: rgb(255 255 255 / 40%);
+  text-align: left;
+  font-size: 0.66rem;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.nivora-app-nav:hover {
+  color: rgb(255 255 255 / 85%);
+  background: rgb(255 255 255 / 3%);
+}
+
+.nivora-app-nav:active {
+  transform: scale(0.985);
+}
+
+.nivora-app-nav.is-active {
+  border-color: rgb(181 244 200 / 10%);
+  background: rgb(181 244 200 / 7%);
+  color: #c7f8d3;
+}
+
+.nivora-app-content {
+  min-width: 0;
+  padding: 1.15rem;
+  background: radial-gradient(ellipse at 95% 0%, rgb(35 77 48 / 9%), transparent 35%), #0b100d;
+}
+
+.nivora-window-icon {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 0.6rem;
+  background: rgb(255 255 255 / 2%);
+  color: rgb(255 255 255 / 48%);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-window-icon:hover {
+  border-color: rgb(181 244 200 / 25%);
+  background: rgb(181 244 200 / 6%);
+  color: #c7f8d3;
+}
+
+.nivora-avatar {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 16%);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #224d32, #12291b);
+  color: #cbf8d5;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.nivora-showcase-view {
+  animation: nivora-rise 300ms ease both;
+}
+
+.nivora-app-stat {
+  min-width: 0;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.8rem;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.75rem;
+}
+
+.nivora-app-stat > span {
+  display: block;
+  overflow: hidden;
+  color: rgb(255 255 255 / 40%);
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-stat strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.45rem;
+  color: #f5fff7;
+  font-size: clamp(0.82rem, 1.3vw, 1.05rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-stat small {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  color: rgb(255 255 255 / 30%);
+  font-size: 0.55rem;
+}
+
+.nivora-app-stat.is-highlight {
+  border-color: rgb(181 244 200 / 16%);
+  background: linear-gradient(145deg, rgb(181 244 200 / 7%), rgb(255 255 255 / 2%));
+}
+
+.nivora-app-stat small.is-positive {
+  color: #aee9bf;
+}
+
+.nivora-app-panel {
+  min-width: 0;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.85rem;
+  background: rgb(255 255 255 / 1.5%);
+  padding: 0.85rem;
+}
+
+.nivora-app-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  border: 1px solid rgb(255 255 255 / 9%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 2%);
+  padding: 0.35rem 0.55rem;
+  color: rgb(255 255 255 / 48%);
+  font-size: 0.57rem;
+  white-space: nowrap;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.nivora-app-chip:hover {
+  border-color: rgb(181 244 200 / 25%);
+  background: rgb(181 244 200 / 5%);
+  color: #c7f8d3;
+}
+
+.nivora-mini-chart {
+  display: flex;
+  height: 5.8rem;
+  align-items: end;
+  gap: 0.35rem;
+}
+
+.nivora-mini-chart > span {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  border-radius: 3px 3px 1px 1px;
+  background: linear-gradient(to top, #326e46, #b5f4c8);
+  transform: scaleY(0.08);
+  transform-origin: bottom;
+  animation: nivora-bar-grow 650ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.nivora-legend-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 2px;
+  background: #b5f4c8;
+}
+
+.nivora-legend-dot.is-muted {
+  background: rgb(255 255 255 / 25%);
+}
+
+.nivora-donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nivora-donut {
+  display: flex;
+  width: 5.3rem;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0d130f 57%, transparent 59%),
+    conic-gradient(#b5f4c8 0 48%, #5e9b70 48% 80%, #34553d 80% 100%);
+  box-shadow: 0 0 26px rgb(181 244 200 / 5%);
+  animation: nivora-donut-in 620ms ease both;
+}
+
+.nivora-donut > span {
+  color: #e9fff0;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.nivora-mini-track {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 7%);
+}
+
+.nivora-mini-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #7fca94;
+}
+
+.nivora-app-transaction {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.6rem;
+  border-top: 1px solid rgb(255 255 255 / 5%);
+  padding: 0.65rem 0;
+}
+
+.nivora-transaction-icon {
+  display: inline-flex;
+  width: 1.9rem;
+  height: 1.9rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 0.65rem;
+  background: rgb(255 255 255 / 3%);
+  color: rgb(255 255 255 / 65%);
+}
+
+.nivora-transaction-icon.income {
+  border-color: rgb(181 244 200 / 12%);
+  background: rgb(181 244 200 / 5%);
+  color: #b5f4c8;
+}
+
+.nivora-transaction-icon.expense {
+  color: #ffd394;
+}
+
+.nivora-app-transaction strong,
+.nivora-activity-row strong {
+  display: block;
+  overflow: hidden;
+  color: rgb(255 255 255 / 82%);
+  font-size: 0.62rem;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-app-transaction small,
+.nivora-activity-row small {
+  display: block;
+  overflow: hidden;
+  margin-top: 0.22rem;
+  color: rgb(255 255 255 / 31%);
+  font-size: 0.54rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nivora-transaction-value {
+  flex: 0 0 auto;
+  font-size: 0.62rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.nivora-transaction-value.income {
+  color: #b5f4c8;
+}
+
+.nivora-transaction-value.expense {
+  color: #ffd394;
+}
+
+.nivora-activity-table {
+  overflow: hidden;
+  width: 100%;
+}
+
+.nivora-activity-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(4.1rem, 0.7fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  border-top: 1px solid rgb(255 255 255 / 5%);
+  padding: 0.7rem 0;
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.57rem;
+}
+
+.nivora-activity-row.is-heading {
+  border-top: 0;
+  padding-top: 0;
+  color: rgb(255 255 255 / 28%);
+  font-size: 0.52rem;
+}
+
+.nivora-activity-row > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nivora-account-card {
+  min-width: 0;
+  border: 1px solid rgb(181 244 200 / 15%);
+  border-radius: 1rem;
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(181 244 200 / 10%), transparent 60%),
+    linear-gradient(145deg, #14241a, #0e1510);
+  padding: 1rem;
+}
+
+.nivora-account-card.is-secondary {
+  border-color: rgb(255 255 255 / 9%);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgb(255 255 255 / 5%), transparent 60%),
+    linear-gradient(145deg, #151b17, #0d120f);
+}
+
+.nivora-account-brand {
+  display: inline-flex;
+  width: 1.8rem;
+  height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(181 244 200 / 18%);
+  border-radius: 0.6rem;
+  background: #b5f4c8;
+  color: #07110b;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.nivora-account-brand.is-secondary {
+  border-color: rgb(255 255 255 / 10%);
+  background: rgb(255 255 255 / 5%);
+  color: #b5f4c8;
+}
+
+@keyframes nivora-donut-in {
+  from {
+    opacity: 0.3;
+    transform: rotate(-20deg) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .nivora-app-body {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .nivora-app-sidebar {
+    display: block;
+    border-right: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 6%);
+    padding: 0.75rem;
+  }
+
+  .nivora-app-sidebar > div:first-child {
+    margin-bottom: 0.7rem;
+    padding-top: 0;
+  }
+
+  .nivora-app-sidebar > p {
+    display: none;
+  }
+
+  .nivora-app-nav {
+    display: inline-flex;
+    min-height: 2.1rem;
+    margin-right: 0.2rem;
+    padding-inline: 0.65rem;
+    font-size: 0.62rem;
+  }
+
+  .nivora-app-nav > svg.ml-auto {
+    display: none;
+  }
+
+  .nivora-app-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .nivora-window-chrome {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    padding-inline: 0.7rem;
+  }
+
+  .nivora-address-bar {
+    font-size: 0.55rem;
+  }
+
+  .nivora-app-content {
+    padding: 0.75rem;
+  }
+
+  .nivora-app-stat {
+    padding: 0.6rem;
+  }
+
+  .nivora-activity-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .nivora-activity-row > span:nth-child(2) {
+    display: none;
+  }
+
+  .nivora-activity-row.is-heading > span:nth-child(2) {
+    display: none;
+  }
+
+  .nivora-showcase-pill {
+    font-size: 0.68rem;
+    padding-inline: 0.65rem;
+  }
+}
