@@ -338,7 +338,7 @@ function ProductShowcase() {
                   type="button"
                   onClick={() => setScreen(item.id)}
                   aria-pressed={screen === item.id}
-                  className={\`nivora-showcase-pill \${screen === item.id ? "is-active" : ""}\`}
+                  className={`nivora-showcase-pill ${screen === item.id ? "is-active" : ""}`}
                 >
                   <Icon size={14} />
                   {item.label}
@@ -383,7 +383,7 @@ function ProductShowcase() {
                     type="button"
                     onClick={() => setScreen(item.id)}
                     aria-pressed={screen === item.id}
-                    className={\`nivora-app-nav \${screen === item.id ? "is-active" : ""}\`}
+                    className={`nivora-app-nav ${screen === item.id ? "is-active" : ""}`}
                   >
                     <Icon size={15} />
                     <span>{item.label}</span>
@@ -454,7 +454,7 @@ function ProductShowcase() {
                       </div>
                       <div className="nivora-mini-chart mt-4">
                         {[42, 56, 36, 68, 52, 78, 62, 91, 72, 84, 64, 100].map((height, i) => (
-                          <span key={i} style={{ height: \`\${height}%\`, animationDelay: \`\${i * 35}ms\` }} />
+                          <span key={i} style={{ height: `${height}%`, animationDelay: `${i * 35}ms` }} />
                         ))}
                       </div>
                       <div className="mt-3 flex gap-3 text-[9px] text-white/35">
@@ -483,14 +483,14 @@ function ProductShowcase() {
                     </div>
                     {transactions.slice(0, 2).map((transaction) => (
                       <div key={transaction.name} className="nivora-app-transaction">
-                        <span className={\`nivora-transaction-icon \${transaction.type}\`}>
+                        <span className={`nivora-transaction-icon ${transaction.type}`}>
                           {transaction.type === "income" ? <ArrowDownRight size={13} /> : <ArrowUpRight size={13} />}
                         </span>
                         <span className="min-w-0 flex-1">
                           <strong>{transaction.name}</strong>
                           <small>{transaction.category}</small>
                         </span>
-                        <span className={\`nivora-transaction-value \${transaction.type}\`}>{transaction.value}</span>
+                        <span className={`nivora-transaction-value ${transaction.type}`}>{transaction.value}</span>
                       </div>
                     ))}
                   </div>
@@ -513,7 +513,7 @@ function ProductShowcase() {
                         <div className="nivora-activity-row" key={transaction.name}>
                           <span className="min-w-0"><strong>{transaction.name}</strong><small>{transaction.category}</small></span>
                           <span className="text-white/35">{transaction.date}</span>
-                          <span className={\`nivora-transaction-value \${transaction.type}\`}>{transaction.value}</span>
+                          <span className={`nivora-transaction-value ${transaction.type}`}>{transaction.value}</span>
                         </div>
                       ))}
                     </div>
